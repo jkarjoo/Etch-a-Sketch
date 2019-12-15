@@ -38,7 +38,6 @@
 .title {
     font-family: 'Gochi Hand', cursive, Arial, Helvetica, sans-serif;
     font-size: 80px;
-    color: gray;
     display: flex;
     justify-content: center;
     margin: 17px 0px 0px 0px;
@@ -159,14 +158,12 @@ background-size: 100% 100%;
 /* Grid */
 .grid-container {
     display: grid;
-    grid-template-rows: repeat(16, 1fr);
-    grid-template-columns: repeat(16, 1fr);
     width: 700px;
     height: 700px;
+    margin: auto;
     background-color: white;
     border: 5px solid #3e3a3a;
     border-radius: 5px;
-    margin: auto;
 }
 
 .grid-item {
@@ -179,5 +176,5 @@ background-size: 100% 100%;
 
 /* Footer */
 footer {
-    margin: 12px 0px 0px 0px;
+    margin: 50px 0px 0px 0px;
 }
