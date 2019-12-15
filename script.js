@@ -1,19 +1,45 @@
 const container = document.querySelector(".grid-container");
+const resizebtn = document.getElementById("resize");
+const clearbtn = document.getElementById("clear");
 let mousePressed = false;
 
-window.addEventListener('mousedown', e => {
+window.addEventListener("mousedown", function() {
         mousePressed = true;
 });
 
-window.addEventListener('mouseup', e => {
+window.addEventListener("mouseup", function() {
         mousePressed = false;
 });
 
-function makeGrid(size) {
+resizebtn.addEventListener("click", resizeGrid);
+
+function resizeGrid() {
+    let grid = prompt("Enter Your Grid Size (1-100)", 30);
+    let regex = /[0-9]/;
+    if (!grid || isNaN(grid) || !grid.match(regex) || grid <= 0 || grid > 100) {
+        alert("Input must be between 1 and 100!");
+        return;
+    }
+    removeOldGrid();
+    const gridNum = Number(grid);
+    makeGrid(gridNum);
+}
+
+function removeOldGrid() {
     const oldGrid = document.querySelectorAll('.grid-item')
     oldGrid.forEach((item) => {
         item.remove();
     })
+}
+
+clearbtn.addEventListener("click", resetGrid);
+
+function resetGrid() {
+    const cells = document.querySelectorAll(".grid-item");
+    cells.forEach(cell => cell.style.backgroundColor = "");
+}
+
+function makeGrid(size) {
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     for (let i = 0; i < size * size; i++) {
@@ -22,17 +48,21 @@ function makeGrid(size) {
         cell.addEventListener('mouseenter', changeColorHold);
         container.appendChild(cell).className = "grid-item";
     }
-}
+};
+
 makeGrid(16);
 
-const resizebtn = document.getElementById("resize");
-const clearbtn = document.getElementById("clear");
-const colors = document.querySelectorAll('.color');
-let cells = document.querySelectorAll(".grid-item");
-
-//Default color, adds the selected class
-let currentColor = 'black';
+let currentColor = "black";
 document.getElementById(currentColor).classList.add("selected");
+
+const colors = document.querySelectorAll('.color');
+    colors.forEach(color => {
+        color.addEventListener("click", function() {
+            document.getElementById(currentColor).classList.remove("selected");
+            currentColor = this.id;
+            document.getElementById(this.id).classList.add("selected");
+    })
+});
 
 function changeColorClick(e) {
     if (currentColor === 'rainbow') {
@@ -52,38 +82,8 @@ function changeColorHold(e) {
     }
 }
 
-function listeners() {
-
-    resizebtn.addEventListener("click", resizeGrid);
-
-    clearbtn.addEventListener("click", resetGrid);
-
-    //All of the colors have a class of 'color', and an ID of their specific color, this sets the color to ID upon click
-    colors.forEach(color => {
-        color.addEventListener("click", function() {
-                document.getElementById(currentColor).classList.remove("selected");
-                currentColor = this.id;
-                document.getElementById(this.id).classList.add("selected");
-        })
-    })
-};
-
-listeners();
-
 function generateRandomColor() {
     return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
 }
-function resetGrid() {
-    cells = document.querySelectorAll('.grid-item'); 
-    cells.forEach(cell => cell.style.backgroundColor = "");
-}
-function resizeGrid() {
-    let grid = prompt("Enter Your Grid Size (1-100)", 30);
-    let regex = /[0-9]/;
-    if (!grid || isNaN(grid) || !grid.match(regex) || grid <= 0 || grid > 100) {
-        alert("Input must be between 1 and 100!");
-        return;
-    }
-    const gridNum = Number(grid);
-    makeGrid(gridNum);
-}
+
+
