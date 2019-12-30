@@ -38,8 +38,7 @@
 .title {
     font-family: 'Gochi Hand', cursive, Arial, Helvetica, sans-serif;
     font-size: 80px;
-    display: flex;
-    justify-content: center;
+    text-align: center;
     margin: 17px 0px 0px 0px;
 }
 
