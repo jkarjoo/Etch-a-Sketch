@@ -32,12 +32,16 @@
 * {
     box-sizing: border-box;
 }
+
+html {
+    height: 100%;
+}
  
 /* Title */
 
 .title {
     font-family: 'Gochi Hand', cursive, Arial, Helvetica, sans-serif;
-    font-size: 80px;
+    font-size: 52px;
     text-align: center;
     margin: 17px 0px 0px 0px;
 }
@@ -50,6 +54,7 @@
 
 /* Background Image */
 body {
+    height: 100%;
     background-image: url("images/sky.jpg");
     background-repeat: no-repeat;
 }
@@ -64,7 +69,7 @@ body {
 .button {
     background-color: rgb(185, 73, 185);
     border-radius: 6px;
-    padding: 6px 40px 6px 40px;
+    padding: 6px 20px 6px 20px;
     margin: 0px 10px 0px 10px;
     font-size: 20px;
     color: black;
@@ -85,7 +90,7 @@ body {
 .color {
     margin: 5px 10px 15px 10px;
     width: 40px;
-    padding: 20px 0px 20px 0px;
+    padding: 10px 0px 20px 0px;
     text-align: center;
     border-radius: 100px;
     border: 1px solid white;
@@ -157,8 +162,8 @@ background-size: 100% 100%;
 /* Grid */
 .grid-container {
     display: grid;
-    width: 700px;
-    height: 700px;
+    width: 90vw;
+    height: 90vw;
     margin: auto;
     background-color: white;
     border: 5px solid #3e3a3a;
@@ -175,5 +180,21 @@ background-size: 100% 100%;
 
 /* Footer */
 footer {
-    margin: 50px 0px 0px 0px;
+    height: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+    .title {
+        font-size: 80px;
+    }
+    .color {
+        padding: 20px 0px 20px 0px;
+    }
+    .grid-container {
+        width: 600px;
+        height: 600px;
+    }
+    .button {
+        padding: 6px 40px 6px 40px;
+    }
 }
