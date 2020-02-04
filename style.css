@@ -172,6 +172,7 @@ background-size: 100% 100%;
 
 .grid-item {
     border: 1px solid #887d86;
+    transition: 0.2s;
 }
 .grid-item:hover {
     background-color: #aba9a9;
