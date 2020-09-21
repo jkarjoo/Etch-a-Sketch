@@ -15,7 +15,7 @@ This is a fun Etch-a-Sketch project where you can draw to your hearts content.
 ## Demo
 
 Here is the working live demo:
-[https://justinkar.github.io/Etch-a-Sketch/](https://justinkar.github.io/Etch-a-Sketch/).
+[https://jkarjoo.github.io/Etch-a-Sketch/](https://jkarjoo.github.io/Etch-a-Sketch/).
 
 ## Technologies
 
